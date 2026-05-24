@@ -12,11 +12,12 @@ client = Groq(api_key=API_KEY)
 MAX_HISTORY = 10
 MAX_OUTPUT_TOKENS = 800
 
-# This CSS completely removes the old native footer text
+# Aggressive CSS layout reset to kill the old footer container completely
 st.markdown("""
     <style>
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    footer {display: none !important;}
+    header {display: none !important;}
+    .stAppDeployButton {display: none !important;}
     </style>
 """, unsafe_allow_html=True)
 
