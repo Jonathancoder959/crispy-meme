@@ -27,7 +27,7 @@ with st.sidebar:
     in_out_metric = st.empty()
     latency_metric = st.empty()
     st.divider()
-    st.caption("Model: qwen/qwen3.8-27b")  # <-- UPDATED VISUAL LABEL
+    st.caption("Model: openai/gpt-oss-120b")  # <-- UPDATED VISUAL LABEL
     if st.button("🗑️ Clear Chat History"):
         st.session_state.messages = []
         st.rerun()
@@ -53,7 +53,7 @@ if prompt := st.chat_input("Ask something..."):
     try:
         start_time = time.time()
         completion = client.chat.completions.create(
-            model="qwen/qwen3.8-27b",  # <-- UPDATED LIVE API ENDPOINT
+            model="openai/gpt-oss-120b",  # <-- UPDATED LIVE API ENDPOINT
             messages=st.session_state.messages,
             max_tokens=MAX_OUTPUT_TOKENS,
         )
