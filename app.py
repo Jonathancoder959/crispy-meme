@@ -27,7 +27,7 @@ with st.sidebar:
     in_out_metric = st.empty()
     latency_metric = st.empty()
     st.divider()
-    st.caption("Model: llama-3.3-70b-versatile")
+    st.caption("Model: qwen-2.5-32b")
     if st.button("🗑️ Clear Chat History"):
         st.session_state.messages = []
         st.rerun()
@@ -53,13 +53,13 @@ if prompt := st.chat_input("Ask something..."):
     try:
         start_time = time.time()
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="qwen-2.5-32b",
             messages=st.session_state.messages,
             max_tokens=MAX_OUTPUT_TOKENS,
         )
         end_time = time.time()
         
-        # FIXED LINE
+        # SCRIPT FIX: Explicitly index choices list to pull response content cleanly
         response = completion.choices[0].message.content
         usage = completion.usage
         prompt_tokens = usage.prompt_tokens if usage else 0
